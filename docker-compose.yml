@@ -1,0 +1,12 @@
+services:
+  roselyn:
+    build: .
+    container_name: roselyn-analyzer
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src:ro
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    entrypoint: ["/bin/bash", "-c", "roselyn && tail -f /dev/null"]
